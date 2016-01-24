@@ -11,6 +11,13 @@ Plugin to show the number of assigned issues on favicon with badge, using favico
   e.g. rake db:migrate_plugins RAILS_ENV=production
 3. (Re)Start Redmine.
 
+=== In case error related bundle install
+
+If you see the error  `Gemfile`: You cannot specify the same gem twice..., please remove this plugin's Gemfile.
+(Additional gems are required only to run plugin's test, so you can remove redmine_issue_favicon/Gemfile.)
+
+- Related Issue: https://bitbucket.org/akiko_pusu/redmine_issue_favicon/issues/1/error-parsing-error-gemfile-you-cannot
+
 === Uninstall
 
 Try this:
