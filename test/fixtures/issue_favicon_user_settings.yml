@@ -4,11 +4,11 @@ one:
 
   user_id: 1
 
-  enabled: false
+  favicon: hide
 
 two:
   id: 2
 
   user_id: 2
 
-  enabled: true
+  favicon: show

@@ -8,7 +8,7 @@ Plugin to show the number of assigned issues on favicon with badge, using favico
    Please note that plugin's folder name should be "redmine_issue_favicon".
    If changed, some migration task will be failed.
 2. Do migration task.
-  e.g. rake db:migrate_plugins RAILS_ENV=production
+  e.g. rake redmine:plugins:migrate RAILS_ENV=production
 3. (Re)Start Redmine.
 
 === In case error related bundle install
@@ -22,7 +22,7 @@ If you see the error  `Gemfile`: You cannot specify the same gem twice..., pleas
 
 Try this:
 
-* rake db:migrate_plugins NAME=redmine_issue_favicon VERSION=0 RAILS_ENV=production
+* rake redmine:plugins:migrate NAME=redmine_issue_favicon VERSION=0 RAILS_ENV=production
 
 === Required Settings
 
