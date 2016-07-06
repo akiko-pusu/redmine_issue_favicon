@@ -19,7 +19,7 @@ Redmine::Plugin.register :redmine_issue_favicon do
   version '0.0.2-dev'
   url 'https://bitbucket.org/akiko_pusu/redmine_issue_favicon'
   author_url 'http://twitter.com/akiko_pusu'
-  requires_redmine :version_or_higher => '2.5.0'
+  requires_redmine :version_or_higher => '3.0.0'
 
   settings partial: 'settings/redmine_issue_favicon',
            default: {
