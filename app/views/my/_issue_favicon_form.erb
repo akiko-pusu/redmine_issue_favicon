@@ -1,5 +1,5 @@
 <p>
   <label><%=h l(:label_issue_favicon) %></label>
   <%= select :pref, :issue_favicon,
-             options_for_select(IssueFaviconUserSetting.i18n_favicons.map {|k,v| [k,v]}, @pref.issue_favicon.favicon) %>
+             options_for_select(IssueFaviconUserSetting.i18n_favicons.map {|k,v| [k,v]}, @pref.issue_favicon.try(:favicon)) %>
 </p>

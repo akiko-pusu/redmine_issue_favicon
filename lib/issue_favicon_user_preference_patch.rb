@@ -4,6 +4,7 @@ module IssueFaviconUserPreferencePatch
 
     base.class_eval do
       after_destroy :destroy_issue_favicon
+      safe_attributes :issue_favicon if defined?(safe_attributes)
     end
   end
 end

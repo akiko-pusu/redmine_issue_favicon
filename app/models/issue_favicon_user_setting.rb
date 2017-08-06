@@ -1,5 +1,4 @@
 class IssueFaviconUserSetting < ActiveRecord::Base
-  unloadable
   belongs_to :user
   validates_presence_of :user
 
