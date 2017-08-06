@@ -58,4 +58,4 @@ appreciated.
 * https://github.com/akiko-pusu/redmine_issue_favicon
 * ~~https://bitbucket.org/akiko_pusu/redmine_issue_favicon~~ (Obsoleted)
 
-
+Build Status: [![CircleCI](https://circleci.com/gh/akiko-pusu/redmine_issue_favicon/tree/master.svg?style=svg)](https://circleci.com/gh/akiko-pusu/redmine_issue_favicon/tree/master)

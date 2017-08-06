@@ -4,10 +4,10 @@ class IssueFaviconApplicationHooks < Redmine::Hook::ViewListener
   def view_layouts_base_html_head(_context = {})
     o = ''
     if User.current.logged?
-      enabled = Setting.plugin_redmine_issue_favicon['enable'] == 'true'
-      user_pref_enabled_favicon = User.current.pref.issue_favicon
-      return if user_pref_enabled_favicon.blank? || user_pref_enabled_favicon.hide?
-      if (enabled && user_pref_enabled_favicon.default?) || user_pref_enabled_favicon.show?
+      global_enabled = Setting.plugin_redmine_issue_favicon['enable'] == 'true'
+      issue_favicon = IssueFaviconUserSetting.find_or_create_by_user_id(User.current.id)
+      return if issue_favicon.hide?
+      if issue_favicon.show? || global_enabled
         my_issue_count = Issue.visible.open.where(assigned_to_id: ([User.current.id] + User.current.group_ids)).size
         o = stylesheet_link_tag('style', plugin: 'redmine_issue_favicon')
         o << javascript_include_tag('favico', plugin: 'redmine_issue_favicon')

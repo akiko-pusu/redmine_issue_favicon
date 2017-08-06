@@ -18,18 +18,17 @@ class LayoutTest < Redmine::IntegrationTest
     post '/my/account', user: { mail: 'admin@example.net' }, pref: { issue_favicon: :show }
     assert_redirected_to '/my/account'
     get '/'
-    # puts @response.body
-    assert_response :success
-    assert_select 'head link[href=?]', '/plugin_assets/redmine_issue_favicon/stylesheets/style.css'
-    assert_select 'head script[src=?]', '/plugin_assets/redmine_issue_favicon/javascripts/favico.js'
 
-    post '/my/account',
-         pref: { issue_favicon: :hide }
+    assert_response :success
+    assert_select 'head link:match("href", ?)', '/plugin_assets/redmine_issue_favicon/stylesheets/style.css'
+    assert_select 'head script:match("src", ?)', '/plugin_assets/redmine_issue_favicon/javascripts/favico.js'
+
+    post '/my/account', pref: { issue_favicon: :hide }
 
     assert_redirected_to '/my/account'
     get '/'
     assert_response :success
-    assert_select 'head link[href=?]', '/plugin_assets/redmine_issue_favicon/stylesheets/style.css', count: 0
-    assert_select 'head script[src=?]', '/plugin_assets/redmine_issue_favicon/javascripts/favico.js', count: 0
+    assert_select 'head link:match("href", ?)', '/plugin_assets/redmine_issue_favicon/stylesheets/style.css', count: 0
+    assert_select 'head script:match("src", ?)', '/plugin_assets/redmine_issue_favicon/javascripts/favico.js', count: 0
   end
 end

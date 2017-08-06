@@ -1,0 +1,37 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2
+
+general:
+  artifacts:
+    - coverage/redmine_issue_favicon_test/index.html
+
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+       - image: circleci/ruby:2.4.1-node-browsers
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run:
+          name: ready for redmine
+          command: |
+            sh script/redmine-ready.sh
+      - run: bundle install --path vendor/bundle --without mysql postgresql rmagick && bundle update
+      - run: bundle exec rake db:migrate RAILS_ENV=test
+      - run: bundle exec rake redmine:plugins:migrate RAILS_ENV=test
+      - run:
+          command: |
+            bundle exec rake redmine_issue_favicon:test RAILS_ENV=test
+      - run:
+          command: |
+            bundle exec rake redmine:plugins:migrate NAME=${CIRCLE_PROJECT_REPONAME} \
+                    VERSION=0 RAILS_ENV=test
+
+
