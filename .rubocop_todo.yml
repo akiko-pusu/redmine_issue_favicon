@@ -14,6 +14,9 @@ Metrics/AbcSize:
 # Configuration parameters: CountComments.
 Metrics/ClassLength:
   Max: 200 
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
 
 # "Line is too long"を無効
 Metrics/LineLength:
@@ -27,10 +30,16 @@ Metrics/CyclomaticComplexity:
 Metrics/PerceivedComplexity:
   Max: 10
 
+Metrics/BlockLength:
+  Max: 30
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+
 # Avoid methods longer than 10 lines of code
 MethodLength:
   CountComments: true  # count full line comments?
-  Max: 45 
+  Max: 45
 
 # Aboid Missing top-level module documentation comment.
 Documentation:
