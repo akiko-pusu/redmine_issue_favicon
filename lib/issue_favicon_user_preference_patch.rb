@@ -3,7 +3,6 @@ module IssueFaviconUserPreferencePatch
     base.send(:include, UserPreferenceInstanceMethodsForIssueFavicon)
 
     base.class_eval do
-      unloadable # Send unloadable so it will not be unloaded in development
       after_destroy :destroy_issue_favicon
     end
   end
