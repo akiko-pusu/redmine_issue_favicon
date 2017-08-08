@@ -1,0 +1,4 @@
+<p>
+  <%=content_tag(:label, l(:button_activate))%>
+  <%=check_box_tag 'settings[enable]', true, @settings['enable'] == "true" %>
+</p>

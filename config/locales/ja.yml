@@ -1,3 +1,6 @@
 # English strings go here for Rails i18n
 ja:
-  label_issue_favicon: 担当チケットの数をfaviconに表示
+  label_issue_favicon: "担当チケット数をfaviconに表示"
+  label_show: "faviconを表示"
+  label_default: "システム全体の設定を引き継ぐ"
+  label_hide: "faviconを表示しない"

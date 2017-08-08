@@ -3,11 +3,9 @@ module IssueFaviconUserPreferencePatch
     base.send(:include, UserPreferenceInstanceMethodsForIssueFavicon)
 
     base.class_eval do
-      unloadable # Send unloadable so it will not be unloaded in development
       after_destroy :destroy_issue_favicon
-
+      safe_attributes :issue_favicon if defined?(safe_attributes)
     end
-
   end
 end
 
@@ -15,12 +13,12 @@ module UserPreferenceInstanceMethodsForIssueFavicon
   def issue_favicon
     issue_favicon = IssueFaviconUserSetting.find_by_user_id(user.id)
     return nil unless issue_favicon
-    issue_favicon.enabled
+    issue_favicon
   end
 
-  def issue_favicon=(enabled)
+  def issue_favicon=(favicon)
     issue_favicon = IssueFaviconUserSetting.find_or_create_by_user_id(user.id)
-    issue_favicon.enabled = enabled
+    issue_favicon.favicon = favicon
     issue_favicon.save!
   end
 
