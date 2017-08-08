@@ -47,11 +47,21 @@ This feature is activated as one of the user preferences.
 
 That's all.
 
+## Changelog
+
+### 0.0.2
+
+* Update favico.js to 0.3.10. (Thank you so much, Miroslav Magda. Repository: https://github.com/ejci/favico.js)
+* Add feature to enabled favicon globaly. 
+* Change repository from Bitbucket to GitHub. Also vcs was changed from Mercurial to Git.
+* Update test code.
+* Support Redmine 3.4.x
+* Add some codes for CI.
+
 ### Note
 
-This plugin has mounted thanks to favicon.js plugin,
-http://lab.ejci.net/favico.js/. Any advice or suggestion would be greatly
-appreciated.
+This plugin has mounted thanks to favicon.js plugin, http://lab.ejci.net/favico.js/. 
+Any advice or suggestion would be greatly appreciated.
 
 ### Repository
 
