@@ -12,18 +12,18 @@ class IssueFaviconUserSettingTest < ActiveSupport::TestCase
     assert true
   end
 
-  # def test_favicon_enabled
-  #   enabled = @favicon.enabled?
-  #   assert_equal false, enabled, @favicon.enabled?
-  #
-  #   @user = User.find(1)
-  #   assert_equal false, @user.pref.issue_favicon, @user.pref.issue_favicon
-  #
-  #   @favicon.enabled = true
-  #   @favicon.save!
-  #   enabled = @favicon.enabled?
-  #   assert_equal true, enabled, @favicon.enabled?
-  # end
+  def test_favicon_show?
+    enabled = @favicon.show?
+    assert_equal false, enabled, @favicon.show?
+
+    @user = User.find(1)
+    assert_equal false, @user.pref.issue_favicon.show?
+
+    @favicon.favicon = IssueFaviconUserSetting.favicons[:show]
+    @favicon.save!
+    @user.reload
+    assert_equal true, @user.pref.issue_favicon.show?
+  end
 
   def test_favcon_create
     @favicon = IssueFaviconUserSetting.find_or_create_by_user_id(3)
