@@ -1,6 +1,6 @@
 class AddFaviconToIssueFaviconUserSetting < ActiveRecord::Migration
   def change
-    add_column :issue_favicon_user_settings, :favicon, :text, default: "default"
+    add_column :issue_favicon_user_settings, :favicon, :text
 
     IssueFaviconUserSetting.reset_column_information
     issue_favicon_user_settings = IssueFaviconUserSetting.all
