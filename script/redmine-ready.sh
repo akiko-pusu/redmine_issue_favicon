@@ -10,8 +10,12 @@ cd /tmp/redmine-${REDMINE_VERSION}
 # switch target version of redmine
 cat << HERE >> config/database.yml
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
+  adapter: mysql2
+  database: redmine_test
+  host: 127.0.0.1
+  username: root
+  password: ""
+  encoding: utf8mb4
 HERE
 
 # move redmine source to wercker source directory
