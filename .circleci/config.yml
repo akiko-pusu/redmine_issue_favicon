@@ -12,18 +12,27 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-       - image: circleci/ruby:2.4.1-node-browsers
+      - image: circleci/ruby:2.4.1-node-browsers
+        environment:
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          TZ: /usr/share/zoneinfo/Asia/Tokyo
+      - image: mysql:5.7
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --innodb-large-prefix=true --innodb-file-format=Barracuda
+        environment:
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
 
     working_directory: ~/repo
 
     steps:
       - checkout
-
       - run:
           name: ready for redmine
           command: |
             sh script/redmine-ready.sh
-      - run: bundle install --path vendor/bundle --without mysql postgresql rmagick && bundle update
+      - run: bundle install --path vendor/bundle --without postgresql rmagick && bundle update
+      - run: bundle exec rake db:create RAILS_ENV=test
       - run: bundle exec rake db:migrate RAILS_ENV=test
       - run: bundle exec rake redmine:plugins:migrate RAILS_ENV=test
       - run:
@@ -33,5 +42,12 @@ jobs:
           command: |
             bundle exec rake redmine:plugins:migrate NAME=${CIRCLE_PROJECT_REPONAME} \
                     VERSION=0 RAILS_ENV=test
+      - run:
+          command: |
+            mkdir -p /tmp/coverage
+            cp -r coverage/redmine_issue_favicon_test /tmp/coverage/
+      - store_artifacts:
+          path: /tmp/coverage
+
 
 
