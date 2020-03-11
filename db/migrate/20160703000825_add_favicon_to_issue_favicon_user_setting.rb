@@ -1,4 +1,9 @@
-class AddFaviconToIssueFaviconUserSetting < ActiveRecord::Migration
+if ActiveRecord.gem_version >= Gem::Version.new('5.0')
+  class AddFaviconToIssueFaviconUserSetting < ActiveRecord::Migration[4.2]; end
+else
+  class AddFaviconToIssueFaviconUserSetting < ActiveRecord::Migration; end
+end
+AddFaviconToIssueFaviconUserSetting.class_eval do
   def change
     add_column :issue_favicon_user_settings, :favicon, :text
 
