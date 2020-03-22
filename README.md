@@ -3,51 +3,69 @@
 Plugin to show the number of assigned issues on favicon with badge, using
 favico.js.
 
-### Plugin installation
+## Plugin installation
 
-1.  Copy the plugin directory into the vendor/plugins directory. Please note
+1. Copy the plugin directory into the vendor/plugins directory. Please note
     that plugin's folder name should be "redmine_issue_favicon". If changed,
     some migration task will be failed.
-2.  Do migration task.
-```
+2. Do migration task.
+
+```bash
+# Redmine3
 rake redmine:plugins:migrate RAILS_ENV=production
+
+# Redmine4
+rails redmine:plugins:migrate RAILS_ENV=production
 ```
+
 or
 
-```
+```bash
+# Redmine3
 bundle exec rake redmine:plugins:migrate RAILS_ENV=production
+
+# Redmine4
+bundle exec rails redmine:plugins:migrate RAILS_ENV=production
 ```
 
-3.  (Re)Start Redmine.
+3.(Re)Start Redmine.
 
 ### Uninstall
 
 Try this:
 
-```
+```bash
 rake redmine:plugins:migrate NAME=redmine_issue_favicon VERSION=0 RAILS_ENV=production
 ```
+
 or
 
-```
+```bash
 bundle exec rake redmine:plugins:migrate NAME=redmine_issue_favicon VERSION=0 RAILS_ENV=production
 ```
-
 
 ### Required Settings
 
 This feature is activated as one of the user preferences.
 
-1.  Login to your Redmine and go to "/my/account" page.
-2.  Enable the option, described as "Show number of assigned issues on
-    favicon".
-3.  After that, if you have assigned and opened issues, the number of issues
-    is shown on favicon with badge.
-
+1. Login to your Redmine and go to "/my/account" page.
+2. Enable the option, described as "Show number of assigned issues on
+   favicon".
+3. After that, if you have assigned and opened issues, the number of issues
+   is shown on favicon with badge.
 
 That's all.
 
 ## Changelog
+
+### 0.0.4
+
+* Apply Portuguese translation by Adriano Baptistella. (GitHub: #8)
+* Apply Portuguese Brazil translation by Adriano Baptistella. (GitHub: #7)
+* Support Redmine4.x (Rails5) by Boris Gorbylev. (GitHub: #10)
+* Update test script and CI setting.
+
+Thank you somuch for above pull requests, @ekho and @adrianobr
 
 ### 0.0.3
 
@@ -71,6 +89,5 @@ Any advice or suggestion would be greatly appreciated.
 ### Repository
 
 * https://github.com/akiko-pusu/redmine_issue_favicon
-* ~~https://bitbucket.org/akiko_pusu/redmine_issue_favicon~~ (Obsoleted)
 
 Build Status: [![CircleCI](https://circleci.com/gh/akiko-pusu/redmine_issue_favicon/tree/master.svg?style=svg)](https://circleci.com/gh/akiko-pusu/redmine_issue_favicon/tree/master)
