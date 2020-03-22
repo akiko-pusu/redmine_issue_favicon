@@ -1,12 +1,9 @@
 #!/bin/sh
-
-apt-get install subversion
 cd /tmp/
-svn checkout http://svn.redmine.org/redmine/branches/${REDMINE_VERSION} redmine
-
-cd /tmp/redmine
+git clone --depth 1 -b $REDMINE_BRANCH https://github.com/redmine/redmine redmine
 
 # switch target version of redmine
+cd /tmp/redmine
 cat << HERE >> config/database.yml
 test:
   adapter: mysql2
@@ -15,6 +12,7 @@ test:
   username: root
   password: ""
   encoding: utf8mb4
+  sql_mode: false
 HERE
 
 # move redmine source to wercker source directory
