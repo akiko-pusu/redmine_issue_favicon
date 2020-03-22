@@ -1,0 +1,6 @@
+# Portuguese Portugal strings go here for Rails i18n
+pt:
+  label_issue_favicon: "Exibir número de tarefas no favicon."
+  label_show: "Exibir Favicon"
+  label_default: "Usar configurações globais"
+  label_hide: "Esconder Favicon"

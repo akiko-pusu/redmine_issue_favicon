@@ -13,13 +13,13 @@ Metrics/AbcSize:
 # Offense count: 1
 # Configuration parameters: CountComments.
 Metrics/ClassLength:
-  Max: 200 
+  Max: 200
   Exclude:
     - 'spec/**/*'
     - 'test/**/*'
 
 # "Line is too long"を無効
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: false
 
 # Offense count: 1
@@ -47,3 +47,6 @@ Documentation:
 
 EndOfLine:
   Enabled: false
+
+Metrics/ModuleLength:
+  Max: 120
