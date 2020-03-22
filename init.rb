@@ -3,14 +3,7 @@
 require 'redmine'
 require 'issue_favicon_application_hooks'
 require 'issue_favicon_my_account_hooks'
-require 'issue_favicon_user_preference_patch'
-
-Rails.configuration.to_prepare do
-  # Guards against including the module multiple time (like in tests)
-  # and registering multiple callbacks
-  require_dependency 'user_preference'
-  UserPreference.include IssueFaviconUserPreferencePatch unless UserPreference.included_modules.include? IssueFaviconUserPreferencePatch
-end
+require 'issue_favicon_my_controller_patch'
 
 Redmine::Plugin.register :redmine_issue_favicon do
   name 'Redmine Issue Favicon plugin'
@@ -25,4 +18,9 @@ Redmine::Plugin.register :redmine_issue_favicon do
            default: {
              'enable' => 'false'
            }
+
+  Rails.configuration.to_prepare do
+    require_dependency 'my_controller'
+    MyController.prepend IssueFaviconMyControllerPatch unless MyController.included_modules.include?(IssueFaviconMyControllerPatch)
+  end
 end
