@@ -2,7 +2,7 @@
  * Created by takano on 2014/03/02.
  */
 var favicon = new Favico({
-  nimation: 'none',
+  animation: 'none',
   bgColor : '#008080',
   textColor: '#ff0'
 })
