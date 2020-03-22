@@ -1,5 +1,8 @@
 # Redmine Issue Favicon Plugin
 
+[![Plugin info at redmine.org](https://img.shields.io/badge/Redmine-plugin-green.svg?)](http://www.redmine.org/plugins/redmine_issue_favicon)
+[![CircleCI](https://circleci.com/gh/akiko-pusu/redmine_issue_favicon/tree/master.svg?style=shield)](https://circleci.com/gh/akiko-pusu/redmine_issue_favicon/tree/master)
+
 Plugin to show the number of assigned issues on favicon with badge, using
 favico.js.
 
@@ -65,7 +68,7 @@ That's all.
 * Support Redmine4.x (Rails5) by Boris Gorbylev. (GitHub: #10)
 * Update test script and CI setting.
 
-Thank you somuch for above pull requests, @ekho and @adrianobr
+Thank you so much for above pull requests, @ekho and @adrianobr
 
 ### 0.0.3
 
