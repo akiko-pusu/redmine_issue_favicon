@@ -12,7 +12,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/ruby:2.4.1-node-browsers
+      - image: circleci/ruby:2.6-browsers-legacy
         environment:
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
@@ -30,7 +30,7 @@ jobs:
       - run:
           name: ready for redmine
           command: |
-            sh script/redmine-ready.sh
+            REDMINE_BRANCH=master sh script/redmine-ready.sh
       - run: bundle install --path vendor/bundle --without postgresql rmagick && bundle update
       - run: bundle exec rake db:create RAILS_ENV=test
       - run: bundle exec rake db:migrate RAILS_ENV=test

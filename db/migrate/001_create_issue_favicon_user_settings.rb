@@ -1,4 +1,9 @@
-class CreateIssueFaviconUserSettings < ActiveRecord::Migration
+if ActiveRecord.gem_version >= Gem::Version.new('5.0')
+  class CreateIssueFaviconUserSettings < ActiveRecord::Migration[4.2]; end
+else
+  class CreateIssueFaviconUserSettings < ActiveRecord::Migration; end
+end
+CreateIssueFaviconUserSettings.class_eval do
   def change
     create_table :issue_favicon_user_settings do |t|
       t.integer :user_id
