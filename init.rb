@@ -9,7 +9,7 @@ Redmine::Plugin.register :redmine_issue_favicon do
   name 'Redmine Issue Favicon plugin'
   author 'Akiko Takano'
   description 'Plugin to show the number of assigned issues on favicon with badge, using favico.js.'
-  version '0.0.4'
+  version '0.1.0'
   url 'https://github.com/akiko-pusu/redmine_issue_favicon'
   author_url 'http://twitter.com/akiko_pusu'
   requires_redmine version_or_higher: '3.0.0'
