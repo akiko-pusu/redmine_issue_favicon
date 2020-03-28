@@ -61,6 +61,13 @@ That's all.
 
 ## Changelog
 
+### 0.1.0
+
+NOTE: Migration is required to store user's preference colors.
+
+* Enabled to change bgColor, textColor of favicon. (GitHub: #6)
+* Code refactoring.
+
 ### 0.0.4
 
 * Apply Portuguese translation by Adriano Baptistella. (GitHub: #8)

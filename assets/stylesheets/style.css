@@ -105,3 +105,9 @@ body {
 		margin-top:120px;
 	}
 }
+
+/*------- For mypage ---------*/
+.favicon-color {
+	display: inline-block;
+	vertical-align: middle;
+}

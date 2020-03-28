@@ -15,7 +15,7 @@ class LayoutTest < Redmine::IntegrationTest
     # module -> disabled
     log_user('admin', 'admin')
 
-    put '/my/account', params: { user: { mail: 'admin@example.net' }, pref: { issue_favicon: :show } }
+    put '/my/account', params: { user: { mail: 'admin@example.net' }, issue_favicon: { favicon: :show } }
     assert_redirected_to '/my/account'
     get '/'
 
@@ -23,7 +23,7 @@ class LayoutTest < Redmine::IntegrationTest
     assert_select 'head link:match("href", ?)', '/plugin_assets/redmine_issue_favicon/stylesheets/style.css'
     assert_select 'head script:match("src", ?)', '/plugin_assets/redmine_issue_favicon/javascripts/favico.js'
 
-    put '/my/account', params: { pref: { issue_favicon: :hide } }
+    put '/my/account', params: { issue_favicon: { favicon: :hide } }
 
     assert_redirected_to '/my/account'
     get '/'

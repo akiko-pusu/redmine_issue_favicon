@@ -3,20 +3,13 @@
 require 'redmine'
 require 'issue_favicon_application_hooks'
 require 'issue_favicon_my_account_hooks'
-require 'issue_favicon_user_preference_patch'
-
-Rails.configuration.to_prepare do
-  # Guards against including the module multiple time (like in tests)
-  # and registering multiple callbacks
-  require_dependency 'user_preference'
-  UserPreference.include IssueFaviconUserPreferencePatch unless UserPreference.included_modules.include? IssueFaviconUserPreferencePatch
-end
+require 'issue_favicon_my_controller_patch'
 
 Redmine::Plugin.register :redmine_issue_favicon do
   name 'Redmine Issue Favicon plugin'
   author 'Akiko Takano'
   description 'Plugin to show the number of assigned issues on favicon with badge, using favico.js.'
-  version '0.0.4'
+  version '0.1.0'
   url 'https://github.com/akiko-pusu/redmine_issue_favicon'
   author_url 'http://twitter.com/akiko_pusu'
   requires_redmine version_or_higher: '3.0.0'
@@ -25,4 +18,9 @@ Redmine::Plugin.register :redmine_issue_favicon do
            default: {
              'enable' => 'false'
            }
+
+  Rails.configuration.to_prepare do
+    require_dependency 'my_controller'
+    MyController.prepend IssueFaviconMyControllerPatch unless MyController.included_modules.include?(IssueFaviconMyControllerPatch)
+  end
 end

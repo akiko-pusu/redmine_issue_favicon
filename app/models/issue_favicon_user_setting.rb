@@ -1,22 +1,25 @@
+# frozen_string_literal: true
+
 class IssueFaviconUserSetting < ActiveRecord::Base
+  include Redmine::SafeAttributes
+
   belongs_to :user
-  validates_presence_of :user
+  validates :user, presence: true
+
+  safe_attributes 'favicon', 'bg_color', 'text_color', 'user_id'
 
   # User preference to overwride global setting and to turn on / off.
   enum favicon: { show: 'show', hide: 'hide', default: 'default' }
 
   def self.find_or_create_by_user_id(user_id)
-    issue_favicon = IssueFaviconUserSetting.where(user_id: user_id).first
-    unless issue_favicon
-      issue_favicon = IssueFaviconUserSetting.new(favicon: :default)
-      issue_favicon.user_id = user_id
-    end
+    issue_favicon = IssueFaviconUserSetting.find_by(user_id: user_id)
+    issue_favicon ||= IssueFaviconUserSetting.new(favicon: :default, user_id: user_id)
     issue_favicon
   end
 
   def self.destroy_by_user_id(user_id)
-    issue_favicon = IssueFaviconUserSetting.where(user_id: user_id).first
-    issue_favicon.destroy if issue_favicon
+    issue_favicon = IssueFaviconUserSetting.find_by(user_id: user_id)
+    issue_favicon&.destroy
   end
 
   def self.i18n_favicons(hash = {})
