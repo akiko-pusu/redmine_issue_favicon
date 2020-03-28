@@ -25,7 +25,7 @@ class IssueFaviconApplicationHooks < Redmine::Hook::ViewListener
     return nil unless issue_favicon && issue_favicon.user_id.present?
 
     bg_color = issue_favicon.bg_color || '#008080'
-    text_color = issue_favicon.text_color || '#ff0000'
+    text_color = issue_favicon.text_color || '#ffff00'
 
     "{ bgColor: '#{bg_color}', textColor: '#{text_color}' }"
   end

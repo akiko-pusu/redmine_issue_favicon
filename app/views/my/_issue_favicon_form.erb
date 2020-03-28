@@ -5,9 +5,33 @@
 </p>
 <p id='bg_color'>
   <label><%=h l(:label_favicon_bg_color, default: 'Fabicon Background Color') %></label>
-  <%= text_field :issue_favicon, :bg_color %>
+  <%= text_field :issue_favicon, :bg_color, type:'color', value: @issue_favicon.bg_color || '#008080' %>
+  <span class='favicon-color' id='issue-favicon-bg-color'><%= @issue_favicon.bg_color || '#008080' %></span>
 </p>
 <p id='text_color'>
   <label><%=h l(:label_favicon_text_color, default: 'Fabicon Text Color') %></label>
-  <%= text_field :issue_favicon, :text_color %>
+  <%= text_field :issue_favicon, :text_color, type:'color', value: @issue_favicon.text_color || '#ffff00' %>
+  <span class='favicon-color' id='issue-favicon-text-color'><%= @issue_favicon.text_color || '#ffff00' %></span>
 </p>
+<script>
+
+// --------- Add event listeners -------------- //
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    let bgColorSpan = document.getElementById('issue-favicon-bg-color')
+    let textColorSpan = document.getElementById('issue-favicon-text-color')
+    let bgColorField = document.getElementById('issue_favicon_bg_color')
+    let textColorField = document.getElementById('issue_favicon_text_color')
+
+    if (bgColorField && textColorField) {
+      bgColorField.addEventListener('change', (event) => {
+        bgColorSpan.textContent = event.target.value
+      })
+
+      textColorField.addEventListener('change', (event) => {
+        textColorSpan.textContent = event.target.value
+      })
+    }
+  }
+}
+</script>
